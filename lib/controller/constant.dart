@@ -6,6 +6,8 @@ const String columnName = 'name';
 const String columnImage = 'image';
 const String columnPrice = 'price';
 const String columnQuantity = 'quantity';
+const String columnProductId = 'productId';
+
 
 Color primarycolor = const Color.fromRGBO(0, 48, 96, 1);
 

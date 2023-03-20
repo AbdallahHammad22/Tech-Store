@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:store/controller/constant.dart';
 import 'package:store/view/home&other_screens/screens/home.dart';
 import 'package:store/view/onboarding&sign/widget/custom_text.dart';
+import '../../../model/control_view.dart';
 import '../../../model/product_model.dart';
 import '../../../view_model/home_view_model.dart';
 
@@ -19,7 +20,7 @@ class MonitorDetail extends StatelessWidget {
               backgroundColor: Colors.white,
               appBar: AppBar(
                 leading: GestureDetector(
-                  onTap: () => Get.off(const HomeScreen()),
+                  onTap: () => Get.off(const ControlView()),
                   child: const Icon(
                     Icons.arrow_back,
                     color: Colors.black,

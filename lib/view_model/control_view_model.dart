@@ -11,6 +11,7 @@ class ControlViewModel extends GetxController {
 
   Widget currentScreen = const HomeScreen();
 
+
   void changeSelectedValue(int selectedValue) {
     navigatorValue = selectedValue;
     switch (selectedValue) {
@@ -26,12 +27,12 @@ class ControlViewModel extends GetxController {
         }
       case 2:
         {
-          currentScreen =  MyCart();
+          currentScreen =  CartView();
           break;
         }
       case 3:
         {
-          currentScreen = const FavoruriteScreenState();
+          currentScreen =  FavoruriteScreen();
           break;
         }
       case 4:

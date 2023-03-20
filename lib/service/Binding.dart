@@ -2,7 +2,8 @@
 
 import 'package:get/get.dart';
 import 'package:store/controller/controller.dart';
-import 'package:store/view_model/cart_view_model.dart';
+import 'package:store/view_model/cart_viewmodel.dart';
+
 import '../view_model/control_view_model.dart';
 import '../view_model/home_view_model.dart';
 
@@ -12,6 +13,6 @@ class Mybinding implements Bindings {
     Get.lazyPut(() => HomeController(), fenix: true);
     Get.lazyPut(() => HomeViewModel(), fenix: true);
     Get.lazyPut(() => ControlViewModel(), fenix: true);
-    Get.lazyPut(() => CartViewModel(), fenix: true);
+    Get.put(() => CartViewModel(),permanent:true);
   }
 }

@@ -6,7 +6,10 @@ import 'package:store/controller/constant.dart';
 import 'package:store/view/home&other_screens/screens/My_Cart.dart';
 import 'package:store/view/home&other_screens/screens/home.dart';
 import 'package:store/view/onboarding&sign/widget/custom_text.dart';
+import '../../../model/cart_product_model.dart';
+import '../../../model/control_view.dart';
 import '../../../model/product_model.dart';
+import '../../../view_model/cart_viewmodel.dart';
 import '../../../view_model/home_view_model.dart';
 
 // ignore: must_be_immutable
@@ -22,7 +25,7 @@ class PhoneDetail extends StatelessWidget {
               backgroundColor: Colors.white,
               appBar: AppBar(
                 leading: GestureDetector(
-                  onTap: () => Get.off(HomeScreen()),
+                  onTap: () => Get.off(ControlView()),
                   child: const Icon(
                     Icons.arrow_back,
                     color: Colors.black,
@@ -140,18 +143,23 @@ class PhoneDetail extends StatelessWidget {
                           Container(
                             width: 400,
                             height: 60,
-                            child: ElevatedButton(
-                              // ignore: sort_child_properties_last
-                              child: Text(
-                                'Add To Basket',
-                                style: TextStyle(
-                                  fontSize: 22,
-                                ),
-                              ),
-                              style: ElevatedButton.styleFrom(
-                                  backgroundColor: primarycolor),
-                              onPressed: () => Get.to(MyCart()),
-                            ),
+                            child:  GetBuilder<CartViewModel>(
+                              init: CartViewModel(),
+                builder: (controller) =>
+                    ElevatedButton(
+                      // ignore: sort_child_properties_last
+                        child: Text(
+                          'Add To Basket',
+                          style: TextStyle(
+                            fontSize: 22,
+                          ),
+                        ),
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: primarycolor),
+                        onPressed: () {
+
+                        }),
+              ),
                           ),
                         ],
                       ),

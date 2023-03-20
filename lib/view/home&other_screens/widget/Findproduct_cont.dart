@@ -18,8 +18,8 @@ class FindproductContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 200,
-      width: 400,
+      height: 400,
+      width: 180,
       decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),
@@ -29,8 +29,8 @@ class FindproductContainer extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(10.0),
             child: SizedBox(
-              height: 150,
-              width: 350,
+              height: 130,
+              width: 150,
               child: GestureDetector(
                 onTap: onPress,
                 child: Image.network(
@@ -42,7 +42,10 @@ class FindproductContainer extends StatelessWidget {
           ),
           Text(
             productText,
-            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 16,
+            ),
           ),
         ],
       ),

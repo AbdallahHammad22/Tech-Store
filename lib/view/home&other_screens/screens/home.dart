@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:store/view/home&other_screens/details/laptop_details.dart';
 import 'package:store/view/home&other_screens/screens/My_Cart.dart';
 import 'package:store/view/home&other_screens/screens/search.dart';
 import 'package:store/view/home&other_screens/details/HeadphoneDetail.dart';
@@ -351,7 +352,7 @@ Widget laptops() {
                       productText: '${controller.productModel[index].name}',
                       productPrice: '${controller.productModel[index].price}',
                       productImage: '${controller.productModel[index].image}',
-                      onPress: () => Get.to(MyCart(
+                      onPress: () => Get.to(LaptopDetail(
                             model: controller.productModel[index],
                           )),
                       additme: () {});

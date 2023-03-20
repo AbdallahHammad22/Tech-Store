@@ -1,61 +1,68 @@
-// ignore_for_file: prefer_const_constructors, file_names
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:store/view/home&other_screens/widget/mycart_cont.dart';
-import '../../../model/product_model.dart';
-import '../../../view_model/home_view_model.dart';
+import 'package:store/view_model/cart_viewmodel.dart';
 
-class MyCart extends StatelessWidget {
+import '../../onboarding&sign/widget/custom_text.dart';
+import '../widget/mycart_cont.dart';
 
-  ProductModel? model;
-  MyCart({
-    super.key,
-    this.model,
-  });
+class CartView extends StatelessWidget {
+  const CartView({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<HomeViewModel>(
-        init:HomeViewModel(),
-        builder: (controller) => Scaffold(
-          body: SingleChildScrollView(
-                  child: Padding(
-                padding: const EdgeInsets.only(left: 10, right: 10),
-                child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const SizedBox(
-                        height: 65,
-                      ),
-                      const Text(
-                        'My Cart',
-                        style:
-                            TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(
-                        height: 700,
-                        child: ListView.separated(
-                            separatorBuilder: (context, index) => SizedBox(
-                                  height: 18,
-                                ),
-                            itemCount:6,
-                            scrollDirection: Axis.vertical,
-                            itemBuilder: (context, index) {
-                              return Column(children: [
-                                Mycartcontainer(
-                                  productImage:
-                                  '${model?.image}',
-                                  productPrice:
-                                  '${model?.price}',
-                                  productValum: '1',
-                                  productname:
-                                      '${model?.name}',
-                                ),
-                              ]);
-                            }),
-                      ),
-                    ]),
-              )),
-        ));
+    return Scaffold(
+      backgroundColor: Colors.white,
+
+      body: Padding(
+        padding: const EdgeInsets.only(right: 20,left: 20),
+        child: SingleChildScrollView(
+          child: Column(children: [
+           const SizedBox(height: 50,),
+           
+       const     CustomText(text: 'My Cart',alignment: Alignment.center,fontsize: 22,weight: FontWeight.bold,),
+            GetBuilder<CartViewModel>(
+              init: CartViewModel(),
+              builder:(controller) =>SizedBox(
+                height: 670,
+                child: ListView.separated(
+                    separatorBuilder: (context, index) => const SizedBox(
+                          height: 16,
+                        ),
+                    itemCount: controller.cartProductmodel.length,
+                    scrollDirection: Axis.vertical,
+                    itemBuilder: (context, index) {
+                      return  Mycartcontainer(
+                        productname:'${controller.cartProductmodel[index].name}',
+                        productImage:
+                        '${controller.cartProductmodel[index].image}',
+                        productPrice: '${controller.cartProductmodel[index].price}',
+                        productValum: '1',
+                      );
+                    }),
+              ),
+            ),
+            GestureDetector(
+              child: Container(
+                width: 350,
+                height: 60,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Colors.blueAccent,
+                ),
+                child: // ignore: sort_child_properties_last
+                const Center(
+                  child: Text(
+                    'Add All To Cart',
+                    style: TextStyle(fontSize: 18, color: Colors.white),
+                  ),
+                ),
+              ),
+              onTap: () {},
+            ),
+
+          ]),
+        ),
+      ),
+    );
   }
 }

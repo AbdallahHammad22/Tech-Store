@@ -2,25 +2,22 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:store/controller/constant.dart';
+
 import 'package:store/view/onboarding&sign/screens/sign_in.dart';
 import 'package:store/view/onboarding&sign/widget/custom_text.dart';
+import '../../../controller/controller.dart';
 import '../../../model/control_view.dart';
 
-class SignUp extends StatefulWidget {
-  const SignUp({super.key});
+class SignUp extends GetWidget<HomeController> {
+  SignUp({super.key});
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  @override
-  State<SignUp> createState() => _SignUpState();
-}
-
-class _SignUpState extends State<SignUp> {
-  bool _passwordVisible = false;
-  var _userPasswordController;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
+        child: Form(
+        key: _formKey,
         child: Padding(
           padding: const EdgeInsets.all(20.0),
           child: Column(
@@ -56,7 +53,14 @@ class _SignUpState extends State<SignUp> {
               SizedBox(
                 height: 10,
               ),
-              TextField(
+              TextFormField(
+                onSaved: (newValue) {
+                controller.name = newValue;
+              }, validator: (value) {
+                if (value == null) {
+                  print('Erorr');
+                }
+              },
                 keyboardType: TextInputType.text,
                 decoration: InputDecoration(
                   hintText: ' Abdallah Hammad',
@@ -73,7 +77,15 @@ class _SignUpState extends State<SignUp> {
               SizedBox(
                 height: 10,
               ),
-              TextField(
+              TextFormField(
+                onSaved: (Value) {
+                  controller.email = Value;
+                },
+                validator: (value) {
+                  if (value == null) {
+                    print('Erorr');
+                  }
+                },
                 keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
                   hintText: ' abdallahhamad343@gmail.com',
@@ -92,28 +104,21 @@ class _SignUpState extends State<SignUp> {
               ),
               TextFormField(
                 keyboardType: TextInputType.text,
-                controller: _userPasswordController,
-                obscureText:
-                    !_passwordVisible, //This will obscure text dynamically
+                onSaved: (Value) {
+                  controller.password = Value;
+                },
+                validator: (value) {
+                  if (value == null) {
+                    print('Erorr');
+                  }
+                },
+
+                    //This will obscure text dynamically
                 decoration: InputDecoration(
                   hintText: 'Enter Your password',
                   hintStyle: TextStyle(color: Colors.grey),
                   // Here is key idea
-                  suffixIcon: IconButton(
-                    icon: Icon(
-                      // Based on passwordVisible state choose the icon
-                      _passwordVisible
-                          ? Icons.visibility
-                          : Icons.visibility_off,
-                      color: Theme.of(context).primaryColorDark,
-                    ),
-                    onPressed: () {
-                      // Update the state i.e. toogle the state of passwordVisible variable
-                      setState(() {
-                        _passwordVisible = !_passwordVisible;
-                      });
-                    },
-                  ),
+
                 ),
               ),
               SizedBox(
@@ -156,7 +161,12 @@ class _SignUpState extends State<SignUp> {
                   style: ElevatedButton.styleFrom(
                     primary: Colors.blueAccent,
                   ),
-                  onPressed: () => Get.to(() => ControlView()),
+                  onPressed:  () {
+                    _formKey.currentState?.save();
+                    if (_formKey.currentState!.validate()) {
+                      controller.createAccountWithEmailAndPassword();
+                    }
+                  }
                 ),
               ),
               SizedBox(
@@ -182,6 +192,6 @@ class _SignUpState extends State<SignUp> {
           ),
         ),
       ),
-    );
+      ));
   }
 }

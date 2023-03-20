@@ -30,8 +30,11 @@ class Location extends StatelessWidget {
           backgroundColor: Colors.white,
           elevation: 0,
         ),
-        body: Column(children: [
-          Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
+        body: Column(
+            children: [
+          Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
             Image.asset('aseets/image/illustration.png'),
             SizedBox(
               height: 20,

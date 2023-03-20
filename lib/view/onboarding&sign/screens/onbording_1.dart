@@ -15,7 +15,8 @@ class Onbording1 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        child: Column(children: [
+        child: Column(
+            children: [
           SizedBox(
             height: 600,
             width: 500,

@@ -49,25 +49,52 @@ class FindProduct extends StatelessWidget {
               padding: const EdgeInsets.only(left: 20, right: 10),
               child: SizedBox(
                 height: 730,
-                child: ListView.separated(
-                    separatorBuilder: (context, index) => SizedBox(
-                          height: 18,
-                        ),
-                    itemCount: controller.categoryModel.length,
-                    scrollDirection: Axis.vertical,
-                    itemBuilder: (context, index) {
-                      return Column(
-                        children: [
-                          FindproductContainer(
-                            productText:
-                                '${controller.categoryModel[index].name}',
-                            onPress: () {},
-                            productImage:
-                                '${controller.categoryModel[index].image}',
-                          ),
-                        ],
-                      );
-                    }),
+                child: GridView.count(
+                         padding: EdgeInsets.only(top: 20),
+                          crossAxisSpacing: 10,
+                          mainAxisSpacing: 10,
+                          crossAxisCount: 2,
+                          children: [
+                              FindproductContainer(
+                              productText:
+                                  '${controller.categoryModel[1].name}',
+                              onPress: () {},
+                              productImage:
+                                  '${controller.categoryModel[1].image}',
+                            ) ,
+                            FindproductContainer(
+                              productText:
+                                  '${controller.categoryModel[0].name}',
+                              onPress: () {},
+                              productImage:
+                                  '${controller.categoryModel[0].image}',
+                            
+                            ),
+                            FindproductContainer(
+                              productText:
+                                  '${controller.categoryModel[3].name}',
+                              onPress: () {},
+                              productImage:
+                                  '${controller.categoryModel[3].image}',
+                            ) ,
+                            FindproductContainer(
+                              productText:
+                                  '${controller.categoryModel[4].name}',
+                              onPress: () {},
+                              productImage:
+                                  '${controller.categoryModel[4].image}',
+                            
+                            ),
+                            FindproductContainer(
+                              productText:
+                                  '${controller.categoryModel[5].name}',
+                              onPress: () {},
+                              productImage:
+                                  '${controller.categoryModel[5].image}',
+                            ) ,
+
+                          ])
+                   
               )),
         ),
       ),

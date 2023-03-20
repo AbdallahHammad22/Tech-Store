@@ -3,15 +3,22 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:store/controller/constant.dart';
+import 'package:store/model/cart_product_model.dart';
+import 'package:store/model/control_view.dart';
+import 'package:store/view/home&other_screens/screens/Favorurite.dart';
 import 'package:store/view/home&other_screens/screens/My_Cart.dart';
 import 'package:store/view/home&other_screens/screens/home.dart';
 import 'package:store/view/onboarding&sign/widget/custom_text.dart';
+import 'package:store/view_model/cart_viewmodel.dart';
 import '../../../model/product_model.dart';
 import '../../../view_model/home_view_model.dart';
+import '../widget/details_widget.dart';
 
 // ignore: must_be_immutable
 class LaptopDetail extends StatelessWidget {
   ProductModel? model;
+  PhoneProductModel? phonemodel;
+
   LaptopDetail({
     super.key,
     this.model,
@@ -25,7 +32,7 @@ class LaptopDetail extends StatelessWidget {
               backgroundColor: Colors.white,
               appBar: AppBar(
                 leading: GestureDetector(
-                  onTap: () => Get.off(HomeScreen()),
+                  onTap: () => Get.off(ControlView()),
                   child: const Icon(
                     Icons.arrow_back,
                     color: Colors.black,
@@ -38,112 +45,22 @@ class LaptopDetail extends StatelessWidget {
               body: SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
+
                   children: [
-                    SizedBox(
-                      height: 30,
-                    ),
-                    Center(
-                      child: SizedBox(
-                        height: 250,
-                        width: 300,
-                        child: Image.network(
-                          '${model?.image}',
-                          fit: BoxFit.fill,
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 100,
+                    detailsWidget(
+                      imagename: '${model?.image}',
+                      productname:'${model?.name}' ,
+                      productprice: '${model?.price}',
+                      productdescription: '${model?.description}',
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(12.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            // ignore: prefer_const_literals_to_create_immutables
-                            children: [
-                              SizedBox(
-                                width: 300,
-                                child: CustomText(
-                                    text: '${model?.name}',
-                                    fontsize: 22,
-                                    weight: FontWeight.bold),
-                              ),
-                              Text(
-                                '${model?.price}',
-                                style: TextStyle(
-                                    fontSize: 16, fontWeight: FontWeight.bold),
-                              ),
-                            ],
-                          ),
-                          SizedBox(height: 30),
-                          Row(
-                            // ignore: prefer_const_literals_to_create_immutables
-                            children: [
-                              CustomText(
-                                text: 'Product Detail',
-                                fontsize: 20,
-                                weight: FontWeight.bold,
-                              ),
-                              SizedBox(
-                                width: 220,
-                              ),
-                              Icon(
-                                Icons.favorite_outline,
-                                size: 25,
-                              ),
-                            ],
-                          ),
-                          SizedBox(
-                            height: 17,
-                          ),
-                          Text(
-                            '${model?.description}',
-                            style: TextStyle(fontSize: 18, color: Colors.grey),
-                          ),
-                          SizedBox(
-                            height: 60,
-                          ),
-                          Row(
-                            // ignore: prefer_const_literals_to_create_immutables
-                            children: [
-                              Text(
-                                'Review',
-                                style: TextStyle(fontSize: 18),
-                              ),
-                              SizedBox(
-                                width: 180,
-                              ),
-                              Icon(
-                                Icons.star,
-                                color: Color.fromRGBO(243, 96, 63, 1),
-                              ),
-                              Icon(
-                                Icons.star,
-                                color: Color.fromRGBO(243, 96, 63, 1),
-                              ),
-                              Icon(
-                                Icons.star,
-                                color: Color.fromRGBO(243, 96, 63, 1),
-                              ),
-                              Icon(
-                                Icons.star,
-                                color: Color.fromRGBO(243, 96, 63, 1),
-                              ),
-                              Icon(
-                                Icons.star,
-                                color: Color.fromRGBO(243, 96, 63, 1),
-                              )
-                            ],
-                          ),
-                          SizedBox(
-                            height: 40,
-                          ),
-                          Container(
-                            width: 400,
-                            height: 60,
-                            child: ElevatedButton(
+                      padding: const EdgeInsets.only(right: 20,left: 20),
+                      child: Container(
+                        width: 400,
+                        height: 60,
+                        child: GetBuilder<CartViewModel>(
+                          init: CartViewModel(),
+                          builder: (controller) => ElevatedButton(
                               // ignore: sort_child_properties_last
                               child: Text(
                                 'Add To Basket',
@@ -152,13 +69,18 @@ class LaptopDetail extends StatelessWidget {
                                 ),
                               ),
                               style: ElevatedButton.styleFrom(
-                                  backgroundColor: primarycolor),
-                              onPressed: () => MyCart(
-                                model: controller.productModel[1],
-                              ),)
-
-                          ),
-                        ],
+                                  backgroundColor: Colors.blueAccent),
+                              onPressed: () {
+                                controller.addProduct(
+                                  CartProductModel(
+                                      name: model!.name,
+                                      image: model!.image,
+                                      quantity: 1,
+                                      price: model!.price,
+                                      productId: model!.productId),
+                                );
+                              }),
+                        ),
                       ),
                     )
                   ],

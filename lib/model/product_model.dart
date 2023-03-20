@@ -1,11 +1,13 @@
 class ProductModel {
-  String? name, image, description, price;
+  String? name, image, description, price, productId;
 
-  ProductModel(
-      {required this.name,
-      required this.image,
-      required this.description,
-      required this.price});
+  ProductModel({
+    required this.name,
+    required this.image,
+    required this.description,
+    required this.price,
+    required this.productId,
+  });
 
   ProductModel.fromJson(Map<dynamic, dynamic> map) {
     // ignore: unnecessary_null_comparison
@@ -17,6 +19,7 @@ class ProductModel {
     image = map['image'];
     description = map['description'];
     price = map['price'];
+    productId = map['productId'];
   }
 
   toJson() {
@@ -25,6 +28,7 @@ class ProductModel {
       'image': image,
       'description': description,
       'price': price,
+      'productId': productId,
     };
   }
 }
@@ -112,6 +116,8 @@ class AppliancesProduct {
     price = map['price'];
   }
 
+  get productId => null;
+
   toJson() {
     return {
       'name': name,
@@ -142,6 +148,8 @@ class HeadphoneProductModel {
     description = map['description'];
     price = map['price'];
   }
+
+  get productId => null;
 
   toJson() {
     return {

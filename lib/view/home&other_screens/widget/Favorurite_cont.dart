@@ -1,14 +1,16 @@
-// ignore_for_file: prefer_const_constructors, sized_box_for_whitespace, file_names
+// ignore_for_file: sized_box_for_whitespace
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:store/view/onboarding&sign/widget/custom_text.dart';
 
-class Favoruritecontainer extends StatelessWidget {
+class MyFavoruritecontainer extends StatelessWidget {
   final String productname;
   final String productValum;
   final String productPrice;
   final String productImage;
 
-  const Favoruritecontainer({
+  const MyFavoruritecontainer({
     super.key,
     required this.productname,
     required this.productValum,
@@ -18,58 +20,74 @@ class Favoruritecontainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        height: 90,
-        child: Row(
-          children: [
-            Container(
-              height: 60,
-              width: 30,
-              child: Image.asset(
-                productImage,
-                fit: BoxFit.cover,
+    return SizedBox(
+      height: 180,
+      child: Column(
+        children: [
+          Row(
+            children: [
+              SizedBox(
+                width: 100,
+                height: 140,
+                child: Image.network(
+                  productImage,
+                  fit: BoxFit.fill,
+                ),
               ),
-            ),
-            const SizedBox(
-              width: 30,
-            ),
-            Container(
-              height: 70,
-              width: 160,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
+              const SizedBox(
+                width: 30,
+              ),
+              SizedBox(
+                height: 120,
+                width: 140,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(height: 20,),
+                    Column(
+                      children: [
+                        SizedBox(
+                          height:60,
+                          child: CustomText(
+                              text: productname,
+                              // ignore: prefer_const_constructors
+
+                              weight: FontWeight.bold,alignment: Alignment.topLeft,
+                              fontsize: 18),
+                        ),
+                        CustomText(
+                           text: productPrice,
+                        fontsize: 20,
+                        ),
+                      ],
+                    ),
+
+
+                  ],
+                ),
+              ),
+              SizedBox(width: 30,),
+              Column(
+                // ignore: prefer_const_literals_to_create_immutables
                 children: [
-                  Text(
-                    productname,
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+
+
+                  const Icon(
+                    Icons.favorite,
+                    size: 28,
+                    color: Colors.red,
                   ),
-                  SizedBox(
-                    height: 7,
-                  ),
-                  Text(
-                    productValum,
-                    style: TextStyle(color: Colors.grey.shade700, fontSize: 16),
-                  ),
+
+
                 ],
               ),
-            ),
-            const SizedBox(
-              width: 80,
-            ),
-            Text(
-              productPrice,
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
-            SizedBox(
-              width: 7,
-            ),
-            const Icon(
-              Icons.arrow_forward,
-              size: 28,
-              color: Colors.black,
-            ),
-          ],
-        ));
+            ],
+          ),Divider(
+            color: Colors.black,
+          ),
+        ],
+
+      ),
+    );
   }
 }

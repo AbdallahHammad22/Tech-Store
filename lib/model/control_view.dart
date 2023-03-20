@@ -1,19 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:store/view/onboarding&sign/screens/sign_in.dart';
+import '../controller/controller.dart';
 import '../view_model/control_view_model.dart';
 
 class ControlView extends StatelessWidget {
   const ControlView({super.key});
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<ControlViewModel>(
-      init: ControlViewModel(),
+    return Obx(() {
+    return(
+        Get.find<HomeController>().user == null)
+        ? SignIn()
+        : GetBuilder<ControlViewModel>(
       builder: (controller) => Scaffold(
         body: controller.currentScreen,
         bottomNavigationBar: bottomNavigationBar(),
       ),
     );
-  }
+  });}
 
   Widget bottomNavigationBar() {
     return GetBuilder<ControlViewModel>(

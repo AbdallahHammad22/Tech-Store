@@ -7,6 +7,7 @@ import 'package:store/controller/controller.dart';
 import 'package:store/view/onboarding&sign/screens/sign_up.dart';
 
 import 'package:store/view/onboarding&sign/widget/custom_text.dart';
+import '../../../model/control_view.dart';
 import '../widget/social_boutton.dart';
 
 class SignIn extends GetWidget<HomeController> {
@@ -40,7 +41,7 @@ class SignIn extends GetWidget<HomeController> {
                         width: 170,
                       ),
                       GestureDetector(
-                        onTap: () => Get.to(() => SignUp()),
+                        onTap: () => Get.offAll(() => SignUp()),
                         child: CustomText(
                           text: 'Sign UP',
                           fontsize: 25,
@@ -68,7 +69,15 @@ class SignIn extends GetWidget<HomeController> {
                   SizedBox(
                     height: 10,
                   ),
-                  TextField(
+                  TextFormField(
+                    onSaved: (Value) {
+                    controller.email = Value;
+                  },
+                    validator: (value) {
+                      if (value == null) {
+                        print('Erorr');
+                      }
+                    },
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
                       hintText: ' abdallahhamad343@gmail.com',
@@ -88,7 +97,7 @@ class SignIn extends GetWidget<HomeController> {
                   TextFormField(
                       keyboardType: TextInputType.text,
                       onSaved: (newValue) {
-                        controller.email = newValue;
+                        controller.password = newValue;
                       },
                       validator: (value) {
                         if (value == null) {
@@ -170,7 +179,9 @@ class SignIn extends GetWidget<HomeController> {
                     height: 30,
                   ),
                   SocialButton(
-                    onPress: (() {}),
+                    onPress: (() {
+                      Get.to(()=>ControlView());
+                    }),
                     text: 'Sign with Facebook',
                     imageName: 'aseets/image/facebook.png',
                   ),
