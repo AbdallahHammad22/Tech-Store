@@ -147,7 +147,8 @@ class HomeScreen extends StatelessWidget {
                           width: 400,
                           height: 200,
                           child: PageView(
-                            children: [ Image.asset(
+                            children: [
+                              Image.asset(
                                 'aseets/image/banner5.png',
                                 fit: BoxFit.fill,
                               ),
@@ -159,7 +160,7 @@ class HomeScreen extends StatelessWidget {
                                 'aseets/image/banner4.png',
                                 fit: BoxFit.fill,
                               ),
-                               Image.asset(
+                              Image.asset(
                                 'aseets/image/banner5.png',
                                 fit: BoxFit.fill,
                               ),
@@ -230,11 +231,13 @@ class HomeScreen extends StatelessWidget {
                                 fontsize: 20,
                                 color: primarycolor)
                           ],
-                        ), Container(
+                        ),
+                        Container(
                           width: 400,
                           height: 200,
                           child: PageView(
-                            children: [ Image.asset(
+                            children: [
+                              Image.asset(
                                 'aseets/image/banner6.png',
                                 fit: BoxFit.fill,
                               ),
@@ -246,7 +249,7 @@ class HomeScreen extends StatelessWidget {
                                 'aseets/image/banner8.jpg',
                                 fit: BoxFit.fill,
                               ),
-                               Image.asset(
+                              Image.asset(
                                 'aseets/image/banner5.png',
                                 fit: BoxFit.fill,
                               ),
@@ -259,7 +262,8 @@ class HomeScreen extends StatelessWidget {
                         HeadPhoneProducts(),
                         SizedBox(
                           height: 20,
-                        ), Container(
+                        ),
+                        Container(
                           width: 400,
                           height: 150,
                           child: PageView(

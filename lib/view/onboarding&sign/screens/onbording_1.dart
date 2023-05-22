@@ -1,73 +1,70 @@
 // ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:store/view/onboarding&sign/screens/location.dart';
-import '../widget/custom_text.dart';
-
+import 'package:store/view/onboarding&sign/screens/sign_in.dart';
 
 class Onbording1 extends StatelessWidget {
-  const Onbording1({
-    super.key,
-  });
+  const Onbording1({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
+    final ButtonStyle style =
+        ElevatedButton.styleFrom(textStyle: const TextStyle(fontSize: 20));
+    return (Scaffold(
+      backgroundColor: Theme.of(context).primaryColor,
+      body: Center(
         child: Column(
-            children: [
-          SizedBox(
-            height: 600,
-            width: 500,
-            child: Image(
-              image: AssetImage('aseets/image/12.jpg'),
-              fit: BoxFit.cover,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            const Padding(
+              padding: EdgeInsets.fromLTRB(51.0, 70.0, 0.0, 0.0),
+              child: Center(
+                child: Text('Find your Gadget',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 60.0,
+                        fontWeight: FontWeight.bold),
+                    textAlign: TextAlign.start),
+              ),
             ),
-          ),
-          Container(
-            height: 299,
-            decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage('aseets/image/122.jpg'),
-                    fit: BoxFit.cover)),
-            child: Column(
-              children: [
-                SizedBox(
-                  height: 60,
+            Padding(
+                padding: EdgeInsets.fromLTRB(0.0, 20.0, 0.0, 20.0),
+                child: ShaderMask(
+                    shaderCallback: (rect) {
+                      return const LinearGradient(
+                        begin: Alignment.center,
+                        end: FractionalOffset.bottomCenter,
+                        colors: [Colors.black, Colors.transparent],
+                      ).createShader(rect);
+                    },
+                    blendMode: BlendMode.dstIn,
+                    child: const Image(
+                        image: AssetImage('aseets/image/splash.png'),
+                        fit: BoxFit.contain))),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.white,
+                onPrimary: const Color(0xff5956E9),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0),
                 ),
-                CustomText(
-                  weight: FontWeight.bold,
-                  alignment: Alignment.center,
-                  text: 'Welcom to Our Store',
-                  color: Colors.white,
-                  fontsize: 25,
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 80,
+                  vertical: 22,
                 ),
-                SizedBox(
-                  height: 30,
+                textStyle: const TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w700,
                 ),
-                GestureDetector(
-                  onTap: () => Get.to(() => (Location())),
-                  child: Container(
-                    height: 60,
-                    width: 150,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.blueAccent,
-                    ),
-                    child: CustomText(
-                      text: 'Get Start',
-                      fontsize: 30,
-                      color: Colors.white,
-                      alignment: Alignment.center,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ]),
+              ),
+              onPressed: () {
+                Get.to(() => SignIn());
+              },
+              child: const Text('Get Started'),
+            )
+          ],
+        ),
       ),
-    );
+    ));
   }
 }

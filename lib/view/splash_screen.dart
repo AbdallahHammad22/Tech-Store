@@ -26,8 +26,8 @@ class _SplashScreenState extends State<SplashScreen> {
       body: Container(
         height: double.infinity,
         decoration: BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage('aseets/image/122.jpg'), fit: BoxFit.cover)),
+          color: Color(0xff5956E9),
+        ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           // ignore: prefer_const_literals_to_create_immutables
@@ -45,12 +45,11 @@ class _SplashScreenState extends State<SplashScreen> {
             CustomText(
               alignment: Alignment.center,
               text: "Online store for selling electronic products",
-              fontsize: 18,
+              fontsize: 14,
               color: Colors.white,
             ),
           ],
         ),
-
       ),
     );
   }

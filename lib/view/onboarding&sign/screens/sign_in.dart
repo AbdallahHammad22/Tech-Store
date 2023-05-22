@@ -38,7 +38,7 @@ class SignIn extends GetWidget<HomeController> {
                           fontsize: 25,
                           weight: FontWeight.bold),
                       SizedBox(
-                        width: 170,
+                        width: 110,
                       ),
                       GestureDetector(
                         onTap: () => Get.offAll(() => SignUp()),
@@ -71,8 +71,8 @@ class SignIn extends GetWidget<HomeController> {
                   ),
                   TextFormField(
                     onSaved: (Value) {
-                    controller.email = Value;
-                  },
+                      controller.email = Value;
+                    },
                     validator: (value) {
                       if (value == null) {
                         print('Erorr');
@@ -120,9 +120,12 @@ class SignIn extends GetWidget<HomeController> {
                     // ignore: prefer_const_literals_to_create_immutables
                     children: [
                       SizedBox(
-                        width: 250,
+                        width: 210,
                       ),
-                      Text('Forgot Password ?',style: TextStyle(fontWeight: FontWeight.bold),)
+                      Text(
+                        'Forgot Password ?',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      )
                     ],
                   ),
                   SizedBox(
@@ -150,7 +153,7 @@ class SignIn extends GetWidget<HomeController> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left:14.0,right:14.0 ),
+              padding: const EdgeInsets.only(left: 14.0, right: 14.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 // ignore: prefer_const_literals_to_create_immutables
@@ -180,7 +183,7 @@ class SignIn extends GetWidget<HomeController> {
                   ),
                   SocialButton(
                     onPress: (() {
-                      Get.to(()=>ControlView());
+                      Get.to(() => ControlView());
                     }),
                     text: 'Sign with Facebook',
                     imageName: 'aseets/image/facebook.png',
