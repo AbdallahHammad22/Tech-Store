@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:store/view/onboarding&sign/screens/location.dart';
 import 'package:store/view/onboarding&sign/screens/sign_in.dart';
 
 class Onbording1 extends StatelessWidget {
@@ -16,16 +17,15 @@ class Onbording1 extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            const Padding(
-              padding: EdgeInsets.fromLTRB(51.0, 70.0, 0.0, 0.0),
-              child: Center(
-                child: Text('Find your Gadget',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 60.0,
-                        fontWeight: FontWeight.bold),
-                    textAlign: TextAlign.start),
-              ),
+            SizedBox(
+              height: 100,
+            ),
+            Text(
+              'Find your Gadget',
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 40.0,
+                  fontWeight: FontWeight.bold),
             ),
             Padding(
                 padding: EdgeInsets.fromLTRB(0.0, 20.0, 0.0, 20.0),
@@ -58,7 +58,7 @@ class Onbording1 extends StatelessWidget {
                 ),
               ),
               onPressed: () {
-                Get.to(() => SignIn());
+                Get.to(() => Location());
               },
               child: const Text('Get Started'),
             )

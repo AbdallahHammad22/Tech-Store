@@ -17,7 +17,7 @@ class Location extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+        backgroundColor: Colors.white,
         appBar: AppBar(
           leading: GestureDetector(
             onTap: () => Get.back(),
@@ -30,11 +30,8 @@ class Location extends StatelessWidget {
           backgroundColor: Colors.white,
           elevation: 0,
         ),
-        body: Column(
-            children: [
-          Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
+        body: Column(children: [
+          Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
             Image.asset('aseets/image/illustration.png'),
             SizedBox(
               height: 20,
@@ -50,7 +47,7 @@ class Location extends StatelessWidget {
             CustomText(
                 text:
                     'Switch on your location to stay in tune with \n           what\'s happening in your area',
-                fontsize: 15,
+                fontsize: 12,
                 alignment: Alignment.center,
                 color: Colors.grey),
             SizedBox(
@@ -68,34 +65,37 @@ class Location extends StatelessWidget {
                       country: country,
                       state: state,
                       city: city,
-                      textFieldInputBorder: UnderlineInputBorder(),
+                     
                     ),
                     SizedBox(
                       height: 60,
                     ),
-                    GestureDetector(
-                      onTap: () {
-                        Get.to(() => SignIn());
-                        Country = country.text;
-                        City = city.text;
-                      },
-                      child: Center(
-                        child: Container(
-                          height: 60,
-                          width: 200,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: Colors.blueAccent,
+                    Center(
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          primary: const Color(0xff5956E9),
+                          onPrimary: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.0),
                           ),
-                          child: CustomText(
-                            text: 'Submit',
-                            fontsize: 22,
-                            color: Colors.white,
-                            alignment: Alignment.center,
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 80,
+                            vertical: 22,
+                          ),
+                          textStyle: const TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w700,
                           ),
                         ),
+                        onPressed: () {
+                          Country = country.text;
+                          City = city.text;
+
+                          Get.to(() => SignIn());
+                        },
+                        child: const Text('Submit'),
                       ),
-                    ),
+                    )
                   ],
                 ),
               ),

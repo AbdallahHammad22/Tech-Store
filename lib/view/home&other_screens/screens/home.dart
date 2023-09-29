@@ -2,21 +2,15 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:store/view/home&other_screens/details/laptop_details.dart';
-import 'package:store/view/home&other_screens/screens/My_Cart.dart';
+import 'package:store/view/home&other_screens/details/details.dart';
 import 'package:store/view/home&other_screens/screens/search.dart';
-import 'package:store/view/home&other_screens/details/HeadphoneDetail.dart';
-import 'package:store/view/home&other_screens/details/monitor_detail.dart';
-import 'package:store/view/home&other_screens/details/phone_detail.dart';
 import 'package:store/view/home&other_screens/widget/product_cont.dart';
 import 'package:store/view/onboarding&sign/widget/custom_text.dart';
 import '../../../controller/constant.dart';
 import '../../../view_model/home_view_model.dart';
-import '../details/appliances_detail.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
-
   @override
   Widget build(BuildContext context) {
     return GetBuilder<HomeViewModel>(
@@ -356,7 +350,7 @@ Widget laptops() {
                       productText: '${controller.productModel[index].name}',
                       productPrice: '${controller.productModel[index].price}',
                       productImage: '${controller.productModel[index].image}',
-                      onPress: () => Get.to(LaptopDetail(
+                      onPress: () => Get.to(Details(
                             model: controller.productModel[index],
                           )),
                       additme: () {});
@@ -385,8 +379,8 @@ Widget mobile() {
                           '${controller.phoneProductModel[index].price}',
                       productImage:
                           '${controller.phoneProductModel[index].image}',
-                      onPress: () => Get.to(PhoneDetail(
-                            model: controller.phoneProductModel[index],
+                      onPress: () => Get.to(Details(
+                            phoneModel: controller.phoneProductModel[index],
                           )),
                       additme: () {});
                 }),
@@ -414,8 +408,8 @@ Widget Monitor() {
                           '${controller.monitorProductModel[index].price}',
                       productImage:
                           '${controller.monitorProductModel[index].image}',
-                      onPress: () => Get.to(MonitorDetail(
-                            model: controller.monitorProductModel[index],
+                      onPress: () => Get.to(Details(
+                            monitorModel: controller.monitorProductModel[index],
                           )),
                       additme: () {});
                 }),
@@ -443,8 +437,9 @@ Widget Appliances() {
                           '${controller.AppliancesProductModel[index].price}',
                       productImage:
                           '${controller.AppliancesProductModel[index].image}',
-                      onPress: () => Get.to(AppliancesDetail(
-                            model: controller.AppliancesProductModel[index],
+                      onPress: () => Get.to(Details(
+                            appliancesModel:
+                                controller.AppliancesProductModel[index],
                           )),
                       additme: () {});
                 }),
@@ -471,8 +466,8 @@ Widget HeadPhoneProducts() {
                           '${controller.HeadphoneProduct[index].price}',
                       productImage:
                           '${controller.HeadphoneProduct[index].image}',
-                      onPress: () => Get.to(HeadPhoneDetail(
-                            model: controller.HeadphoneProduct[index],
+                      onPress: () => Get.to(Details(
+                            headphoneModel: controller.HeadphoneProduct[index],
                           )),
                       additme: () {});
                 }),
