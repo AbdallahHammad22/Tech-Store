@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:store/view/onboarding&sign/screens/sign_in.dart';
+import 'package:store/view/auth/Screens/sign_in.dart';
 import '../controller/controller.dart';
 import '../view_model/control_view_model.dart';
 

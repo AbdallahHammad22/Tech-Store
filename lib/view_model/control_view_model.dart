@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:store/view/home&other_screens/screens/Favorurite.dart';
-import 'package:store/view/home&other_screens/screens/Find%20_Products.dart';
-import 'package:store/view/home&other_screens/screens/My_Cart.dart';
-import 'package:store/view/home&other_screens/screens/home.dart';
-import '../view/home&other_screens/screens/Account.dart';
+import 'package:store/view/home/screens/Favorurite.dart';
+import 'package:store/view/home/screens/category.dart';
+import 'package:store/view/home/screens/My_Cart.dart';
+import 'package:store/view/home/screens/home.dart';
+import '../view/home/screens/Account.dart';
 
 class ControlViewModel extends GetxController {
   int navigatorValue = 0;
@@ -22,7 +22,7 @@ class ControlViewModel extends GetxController {
         }
       case 1:
         {
-          currentScreen = const FindProduct();
+          currentScreen = const CategoryScreen();
           break;
         }
       case 2:

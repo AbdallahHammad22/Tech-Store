@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:store/service/Binding.dart';
-import 'view/splash_screen.dart';
+import 'package:store/view/Onboarding/screens/welcome_page.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,10 +19,9 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
         initialBinding: Mybinding(),
         debugShowCheckedModeBanner: false,
-       
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const SplashScreen());
+        home: const WelcomScreen());
   }
 }

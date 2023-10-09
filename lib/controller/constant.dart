@@ -14,4 +14,6 @@ late String Country;
 
 // ignore: non_constant_identifier_names
 late String City;
-Color P1 = Color(0xff5956E9);
+Color blue = const Color.fromARGB(255, 40, 128, 201);
+Color white = Colors.white;
+Color gry = const Color.fromARGB(255, 187, 187, 187);
