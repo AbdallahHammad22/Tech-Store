@@ -30,8 +30,8 @@ class Button extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        primary: primarycolor,
-        onPrimary: onPrimarycolor,
+        // primary: primarycolor,
+        // onPrimary: onPrimarycolor,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(borderRadius),
         ),
